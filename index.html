@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One Async JS</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body
+    class="font-mono flex flex-col justify-center align-center h-screen w-screen"
+  >
+    <div class="main m-auto">
+      <h1 class="text-5xl text-center pb-8">colors.</h1>
+      <div class="button-wrapper flex justify-center w-xl">
+        <button
+          id="start"
+          class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+        >
+          <span
+            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent"
+          >
+            Start Changing BG Color
+          </span>
+        </button>
+
+        <button
+          id="stop"
+          type="button"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        >
+          Stop
+        </button>
+      </div>
+    </div>
+    <script>
+      let myInterval;
+
+      document.getElementById("start").addEventListener("click", () => {
+        console.log("start");
+        myInterval = setInterval(function () {
+          document.body.style.background = `rgb(${Math.floor(
+            Math.random() * 256
+          )},${Math.floor(Math.random() * 256)},${Math.floor(
+            Math.random() * 256
+          )})`;
+        }, 1000);
+      });
+
+      document.getElementById("stop").addEventListener("click", () => {
+        clearInterval(myInterval);
+        console.log("Counter stopped");
+      });
+    </script>
+  </body>
+</html>

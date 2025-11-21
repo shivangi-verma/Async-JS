@@ -1,6 +1,6 @@
 # 🌈 [Async JS – Background Color Changer](https://shivangi-verma.github.io/Async-JS/)
 
-<img width="1313" height="760" alt="image" src="https://github.com/user-attachments/assets/139061c9-af20-49c4-9ea6-dcfe03948642" />
+<img width="1313" height="760" alt="image" src="Color_Changer.gif" />
 
 
 ## 📘 Overview  

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <h1>promise</h1>
+
+    <script>
+      const promiseOne = new Promise((resolve, reject) => {
+        // async task
+        setTimeout(() => {
+          console.log("async task completed");
+          resolve();
+        }, 1000);
+      });
+
+      promiseOne.then(() => {
+        // .then is connected to the resolve in promise
+        console.log("promise consumed ");
+      });
+
+      new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          console.log("async task 2 ");
+          resolve();
+        }, 1000);
+      }).then(() => console.log("async 2 resolved"));
+
+      const promiseThree = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("async task 3");
+          resolve({ name: "chaiwala", email: "chai@masala.com" });
+        }, 1000);
+      });
+
+      promiseThree.then(function (user) {
+        console.log(user);
+      });
+
+      // promise four ------------------------------------------------------
+
+      console.log(
+        "----------------------------promise four--------------------------------"
+      );
+
+      const promiseFour = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let error = true;
+          //   let error = false;
+          if (!error) {
+            resolve({ name: "chailal", pass: "chai@123" });
+          } else {
+            reject("ERROR: something went wrong ");
+          }
+          console.log("async 4 task ");
+        }, 1000);
+      });
+
+      promiseFour
+        .then((user) => {
+          console.log(user);
+          return user.name;
+        })
+        .then((user) => {
+          console.log(user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      // promise five
+
+      const promiseFive = new Promise((reject, resolve) => {
+        let error = true;
+        // let error = false ;
+        if (!error) {
+          resolve({ name: "js", pass: "js@123" });
+        } else {
+          reject("ERROR: JS went wrong 5 ");
+        }
+        console.log("async 5 task ");
+      }, 1000);
+
+      async function consumePromise5() {
+       try {
+         const response = await promiseFive;
+        console.log(response + " - resoponse");
+       } catch (error) {
+        console.log(error);
+        
+       }
+      }
+
+      consumePromise5();
+    </script>
+  </body>
+</html>
